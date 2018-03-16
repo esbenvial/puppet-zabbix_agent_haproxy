@@ -24,6 +24,7 @@ class zabbix_agent_haproxy (
 
   exec {'zabbix haproxy membership':
     unless  => "/bin/grep -q 'haproxy\\S*zabbix' /etc/group",
-    command => '/sbin/usermod-aG haproxy zabbix',
+    command => '/sbin/usermod -aG haproxy zabbix',
+    notify  => Service['zabbix-agent'],
   }
 }
