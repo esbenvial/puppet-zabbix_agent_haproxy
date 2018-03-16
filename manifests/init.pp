@@ -23,7 +23,7 @@ class zabbix_agent_haproxy (
   package { 'netcat-openbsd': ensure => 'present', }
 
   exec {'zabbix haproxy membership':
-    unless  => "grep -q 'haproxy\\S*zabbix' /etc/group",
-    command => 'usermod -aG haproxy zabbix',
+    unless  => "/bin/grep -q 'haproxy\\S*zabbix' /etc/group",
+    command => '/sbin/usermod-aG haproxy zabbix',
   }
 }
